@@ -40,6 +40,33 @@ func Substr(s string, pos, length int) string {
 	return string(runes[pos:l])
 }
 
+func RuneSlices(r []rune, minLen int) [][]rune {
+	totLen := len(r)
+	var subsCount, length int
+
+	if minLen <= 1 {
+		minLen = 1
+		length = totLen
+		subsCount = factorial(length)
+	} else {
+		length = totLen - minLen + 1
+		subsCount = factorial(length)
+	}
+
+	subs := make([][]rune, subsCount)
+
+	next := 0
+	for i := 0; i < length; i++ {
+		for j := i; j < totLen; j++ {
+			if j-i+1 >= minLen {
+				subs[next] = r[i : j+1]
+				next++
+			}
+		}
+	}
+	return subs
+}
+
 // Cache factorials
 var factorials = make(map[int]int)
 
