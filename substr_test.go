@@ -44,6 +44,15 @@ func TestRuneSlices(t *testing.T) {
 	}
 }
 
+func TestSortString(t *testing.T) {
+	str := "hello"
+	actual := SortString(str)
+	expected := "ehllo"
+	if actual != expected {
+		t.Error("Should have returned a sorted string", expected, actual)
+	}
+}
+
 func sameStrings(a []string, b []string) bool {
 	if len(a) != len(b) {
 		return false

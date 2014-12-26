@@ -1,5 +1,9 @@
 package stringutil
 
+import (
+	"sort"
+)
+
 func Substrs(str string, minLen int) []string {
 	// Convert to a rune to safely handle unicode
 	r_str := []rune(str)
@@ -65,6 +69,30 @@ func RuneSlices(r []rune, minLen int) [][]rune {
 		}
 	}
 	return subs
+}
+
+// SortString
+// Source: http://stackoverflow.com/a/22698017/2078664
+
+type sortRunes []rune
+
+func (s sortRunes) Less(i, j int) bool {
+	return s[i] < s[j]
+}
+
+// Swap the runes at indexes i and j
+func (s sortRunes) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
+}
+
+func (s sortRunes) Len() int {
+	return len(s)
+}
+
+func SortString(str string) string {
+	r := []rune(str)
+	sort.Sort(sortRunes(r))
+	return string(r)
 }
 
 // Cache factorials
