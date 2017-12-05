@@ -53,6 +53,15 @@ func TestSortString(t *testing.T) {
 	}
 }
 
+func TestReverseString(t *testing.T) {
+	str := "hello"
+	actual := ReverseString(str)
+	expected := "olleh"
+	if actual != expected {
+		t.Error("Should have returned a reversed string", expected, actual)
+	}
+}
+
 func sameStrings(a []string, b []string) bool {
 	if len(a) != len(b) {
 		return false

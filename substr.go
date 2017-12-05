@@ -2,6 +2,8 @@ package stringutil
 
 import (
 	"sort"
+
+	exampleutil "github.com/golang/example/stringutil"
 )
 
 func Substrs(str string, minLen int) []string {
@@ -69,6 +71,10 @@ func RuneSlices(r []rune, minLen int) [][]rune {
 		}
 	}
 	return subs
+}
+
+func ReverseString(s string) string {
+	return exampleutil.Reverse(s)
 }
 
 // SortString
